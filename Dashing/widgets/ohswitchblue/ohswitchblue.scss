@@ -1,0 +1,24 @@
+// ----------------------------------------------------------------------------
+// Widget styles
+// ----------------------------------------------------------------------------
+.widget-ohswitchblue {
+
+  background-color: #444 !important;
+
+  .title {
+    color: #fff;
+  }
+
+  .switch-icon-off .switch-icon-on {
+    font-size: 150%;
+  }
+
+  .switch-icon-off {
+    color: #3869ff;
+  }
+
+  .switch-icon-on {
+  	color: #3869ff;
+  }
+
+}
