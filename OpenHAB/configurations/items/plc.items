@@ -1,0 +1,59 @@
+Group gDashboard
+
+Switch AC_Cycle "AC Cycle" (All, gDashboard) {modbus="slave1:0"}
+
+Switch SCR_Override "SCR_Override" (All, gDashboard) {modbus="slave13:0"}
+
+Switch AC_Up "AC Up" (All, gDashboard) {modbus="slave14:0"}
+
+Switch AC_Down "AC Down" (All, gDashboard) {modbus="slave15:0"}
+
+Switch SCR "SCR Indicator" (All, gDashboard) {modbus="slave16:0"}
+
+Number Temp_Avg "Temp [%.1f]" (All, gDashboard) {modbus="slave2:0"}
+
+Number Humidity "Humidity [%.1f]" (All, gDashboard) {modbus="slave3:0"}
+
+Number Watts "Watts [%.1f]" (All, gDashboard) {modbus="slave4:0"}
+
+Number Line_A_Current "Line A Current [%.1f]" (All, gDashboard) {modbus="slave5:0"}
+
+Number Line_B_Current "Line B Current [%.1f]" (All, gDashboard) {modbus="slave6:0"}
+
+Number Voltage "Voltage [%.1f]" (All, gDashboard) {modbus="slave7:0"}
+
+Number KWH "KWH [%f]" (All, gDashboard) {modbus="slave8:0"}
+
+Number Power_Factor "Power Factor [%.1f]" (All, gDashboard) {modbus="slave9:0"}
+
+Number Hertz "Hertz [%.1f]" (All, gDashboard) {modbus="slave10:0"}
+
+Number Estimated_Bill "Estimated Bill [%.1f]" (All, gDashboard) {modbus="slave11:0"}
+
+Number Line2Line_Volts "Line To Line Volts [%f]" (All, gDashboard) {modbus="slave12:0"}
+
+Number UPS1_Load "UPS 1 Load [%.1f]" (All, gDashboard) { snmp="<[192.168.1.12/3664:tripplite:.1.3.6.1.2.1.33.1.4.4.1.5.1:5000]" }
+
+Number UPS1_Battery "UPS 1 Load [%.1f]" (All, gDashboard) { snmp="<[192.168.1.12/3664:tripplite:.1.3.6.1.2.1.33.1.2.4.0:5000]" }
+
+Number UPS2_Load "UPS 2 Load [%.1f]" (All, gDashboard) { snmp="<[192.168.1.10/3664:tripplite:.1.3.6.1.2.1.33.1.4.4.1.5.1:5000]" }
+
+Number UPS2_Battery "UPS 2 Load [%.1f]" (All, gDashboard) { snmp="<[192.168.1.10/3664:tripplite:.1.3.6.1.2.1.33.1.2.4.0:5000]" }
+
+Number Thermostat "Thermostat [%d]" (All, gDashboard) {modbus="slave17:0"}
+
+Number Arduino1Pot "Arduino 1 Pot [%d]" (All, gDashboard) {modbus="slave18:0"}
+
+Number Arduino1Temp "Arduino 1 Temp [%d]" (All, gDashboard) {modbus="slave20:0"}
+
+Switch FireTest "Fire Test" (All, gDashboard) {modbus="slave19:0"}
+
+Number Arduino1Flow "Arduino 1 Flow [%d]" (All, gDashboard) {modbus="slave21:0"}
+
+Number PLCArduinoTemp "PLC Arduino Temp [%d]" (All, gDashboard) {modbus="slave22:0"}
+
+Number PLCArduinoPot "PLC Arduino Pot [%d]" (All, gDashboard) {modbus="slave23:0"}
+
+Switch HeatMode "Heat Mode" (All, gDashboard) {modbus="slave24:0"}
+
+Switch FanOnly "Fan Only" (All, gDashboard) {modbus="slave25:0"}
