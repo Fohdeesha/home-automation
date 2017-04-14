@@ -6,7 +6,6 @@
 
 Adafruit_ADS1115 ads;
 
-// Update these with values suitable for your network.
 byte mac[] = { 0x90, 0xA2, 0xDA, 0x0F, 0x5E, 0x69 };
 IPAddress ip(192, 168, 1, 21);
 IPAddress server(192, 168, 1, 28);
@@ -21,7 +20,10 @@ int red1;
 int green1;
 int blue1;
 long ts;
-
+float PSU24v1;
+int PSU24v2;
+int PSU12v;
+int PSU5v;
 
 void callback(char* topic, byte* payload, unsigned int length) {
   Serial.print("Message arrived [");
@@ -44,6 +46,8 @@ void callback(char* topic, byte* payload, unsigned int length) {
   analogWrite(RED, red1);
   analogWrite(GREEN, green1);
   analogWrite(BLUE, blue1);
+
+
 
   
   // print obtained values for debugging
@@ -99,11 +103,8 @@ void setup()
   client.setServer(server, 1883);
   client.setCallback(callback);
 
-
   Ethernet.begin(mac, ip);
   ts = millis();
-
-
 }
 
 void loop()
@@ -132,15 +133,19 @@ void loopADC()
   adc4 = ads.readADC_SingleEnded(3);
 
 // scale ADC output with calibrated voltage divider values and offset
-  int Input1 = (adc1 + 16) / 10.654;
-  int Input2 = (adc2 + 16) / 10.654;
-  int Input3 = (adc3 + 16) / 10.670;
-  int Input4 = (adc4 + 16) / 10.650;
+  PSU24v1 = (adc1 + 16) / 10.654;
+  PSU24v2 = (adc2 + 16) / 10.654;
+  PSU12v = (adc3 + 16) / 10.670;
+  PSU5v = (adc4 + 16) / 10.650;
   
-  Serial.print("24v Supply #1: "); Serial.println(Input1);
-  Serial.print("24v Supply #2: "); Serial.println(Input2);
-  Serial.print("12v Rail: "); Serial.println(Input3);
-  Serial.print("5v Rail: "); Serial.println(Input4);
+  Serial.print("24v Supply #1: "); Serial.println(PSU24v1);
+  Serial.print("24v Supply #2: "); Serial.println(PSU24v2);
+  Serial.print("12v Rail: "); Serial.println(PSU12v);
+  Serial.print("5v Rail: "); Serial.println(PSU5v);
   Serial.println(" ");
+    char Power1[6];
+  dtostrf(PSU24v1,4,2,Power1);
+
+  client.publish("/read/arduino_LED/PSU1",Power1);
   
 }
