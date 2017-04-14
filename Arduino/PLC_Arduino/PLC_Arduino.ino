@@ -21,9 +21,9 @@ int green1;
 int blue1;
 long ts;
 float PSU24v1;
-int PSU24v2;
-int PSU12v;
-int PSU5v;
+float PSU24v2;
+float PSU12v;
+float PSU5v;
 
 void callback(char* topic, byte* payload, unsigned int length) {
   Serial.print("Message arrived [");
@@ -133,19 +133,35 @@ void loopADC()
   adc4 = ads.readADC_SingleEnded(3);
 
 // scale ADC output with calibrated voltage divider values and offset
-  PSU24v1 = (adc1 + 16) / 10.654;
-  PSU24v2 = (adc2 + 16) / 10.654;
-  PSU12v = (adc3 + 16) / 10.670;
-  PSU5v = (adc4 + 16) / 10.650;
+  PSU24v1 = (adc1 + 16) / 1065.400;
+  PSU24v2 = (adc2 + 16) / 1065.580;
+  PSU12v = (adc3 + 16) / 1067.542;
+  PSU5v = (adc4 + 16) / 1064.542;
   
   Serial.print("24v Supply #1: "); Serial.println(PSU24v1);
   Serial.print("24v Supply #2: "); Serial.println(PSU24v2);
   Serial.print("12v Rail: "); Serial.println(PSU12v);
   Serial.print("5v Rail: "); Serial.println(PSU5v);
   Serial.println(" ");
-    char Power1[6];
+  
+    char Power1[5];
   dtostrf(PSU24v1,4,2,Power1);
 
   client.publish("/read/arduino_LED/PSU1",Power1);
+
+    char Power2[5];
+  dtostrf(PSU24v2,4,2,Power2);
+
+  client.publish("/read/arduino_LED/PSU2",Power2);
+
+    char Power3[5];
+  dtostrf(PSU12v,4,2,Power3);
+
+  client.publish("/read/arduino_LED/PSU3",Power3);
+
+    char Power4[5];
+  dtostrf(PSU5v,4,2,Power4);
+
+  client.publish("/read/arduino_LED/PSU4",Power4);
   
 }

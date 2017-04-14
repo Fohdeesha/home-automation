@@ -1,5 +1,9 @@
 Group gDashboard
 
+Group Lights_LivingRoom
+
+Group WIFI_RGB_2G
+
 Switch AC_Cycle "AC Cycle" (All, gDashboard) {modbus="slave1:0"}
 
 Switch SCR_Override "SCR_Override" (All, gDashboard) {modbus="slave13:0"}
@@ -32,13 +36,13 @@ Number Estimated_Bill "Estimated Bill [%.1f]" (All, gDashboard) {modbus="slave11
 
 Number Line2Line_Volts "Line To Line Volts [%f]" (All, gDashboard) {modbus="slave12:0"}
 
-Number UPS1_Load "UPS 1 Load [%.1f]" (All, gDashboard) { snmp="<[192.168.1.12/3664:tripplite:.1.3.6.1.2.1.33.1.4.4.1.5.1:5000]" }
+Number UPS1_Load "UPS 1 Load [%.1f]" (All, gDashboard) {snmp="<[192.168.1.16/3664:tripplite:.1.3.6.1.2.1.33.1.4.4.1.5.1:5000]"}
 
-Number UPS1_Battery "UPS 1 Load [%.1f]" (All, gDashboard) { snmp="<[192.168.1.12/3664:tripplite:.1.3.6.1.2.1.33.1.2.4.0:5000]" }
+Number UPS1_Battery "UPS 1 Load [%.1f]" (All, gDashboard) {snmp="<[192.168.1.16/3664:tripplite:.1.3.6.1.2.1.33.1.2.4.0:5000]"}
 
-Number UPS2_Load "UPS 2 Load [%.1f]" (All, gDashboard) { snmp="<[192.168.1.10/3664:tripplite:.1.3.6.1.2.1.33.1.4.4.1.5.1:5000]" }
+Number UPS2_Load "UPS 2 Load [%.1f]" (All, gDashboard) {snmp="<[192.168.1.10/3664:tripplite:.1.3.6.1.2.1.33.1.4.4.1.5.1:5000]"}
 
-Number UPS2_Battery "UPS 2 Load [%.1f]" (All, gDashboard) { snmp="<[192.168.1.10/3664:tripplite:.1.3.6.1.2.1.33.1.2.4.0:5000]" }
+Number UPS2_Battery "UPS 2 Load [%.1f]" (All, gDashboard) {snmp="<[192.168.1.10/3664:tripplite:.1.3.6.1.2.1.33.1.2.4.0:5000]"}
 
 Number Thermostat "Thermostat [%d]" (All, gDashboard) {modbus="slave17:0"}
 
@@ -57,3 +61,16 @@ Number PLCArduinoPot "PLC Arduino Pot [%d]" (All, gDashboard) {modbus="slave23:0
 Switch HeatMode "Heat Mode" (All, gDashboard) {modbus="slave24:0"}
 
 Switch FanOnly "Fan Only" (All, gDashboard) {modbus="slave25:0"}
+
+Number SCRDimmer "SCR Dimmer [%d]" (All, gDashboard) {modbus="slave26:0"}
+
+Color fWIFI_RGB_2 "RGB" <slider> (WIFI_RGB_2G)
+String WIFI_RGB_2_RGB (WIFI_RGB_2G) {mqtt=">[mosquitto:control/arduino_LED/livingroom/color:command:*:default]"}
+
+Number PSU1 "PSU1 [%.1f]" {mqtt="<[mosquitto:/read/arduino_LED/PSU1:state:default]"}
+
+Number PSU2 "PSU2 [%.1f]" {mqtt="<[mosquitto:/read/arduino_LED/PSU2:state:default]"}
+
+Number PSU3 "PSU3 [%.1f]" {mqtt="<[mosquitto:/read/arduino_LED/PSU3:state:default]"}
+
+Number PSU4 "PSU4 [%.1f]" {mqtt="<[mosquitto:/read/arduino_LED/PSU4:state:default]"}
