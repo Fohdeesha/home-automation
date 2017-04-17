@@ -24,6 +24,8 @@ float PSU24v1;
 float PSU24v2;
 float PSU12v;
 float PSU5v;
+int AnalogIn1 = 0;
+float LED24v;
 
 void callback(char* topic, byte* payload, unsigned int length) {
   Serial.print("Message arrived [");
@@ -131,17 +133,20 @@ void loopADC()
   adc2 = ads.readADC_SingleEnded(1);
   adc3 = ads.readADC_SingleEnded(2);
   adc4 = ads.readADC_SingleEnded(3);
+  AnalogIn1 = analogRead(A0);
 
 // scale ADC output with calibrated voltage divider values and offset
-  PSU24v1 = (adc1 + 16) / 1065.400;
-  PSU24v2 = (adc2 + 16) / 1065.580;
+  PSU24v1 = (adc1 + 16) / 1065.200;
+  PSU24v2 = (adc2 + 16) / 1065.540;
   PSU12v = (adc3 + 16) / 1067.542;
   PSU5v = (adc4 + 16) / 1064.542;
+  LED24v = AnalogIn1 / 40.840;
   
   Serial.print("24v Supply #1: "); Serial.println(PSU24v1);
   Serial.print("24v Supply #2: "); Serial.println(PSU24v2);
   Serial.print("12v Rail: "); Serial.println(PSU12v);
   Serial.print("5v Rail: "); Serial.println(PSU5v);
+  Serial.print("LED 24v Supply: "); Serial.println(LED24v);
   Serial.println(" ");
   
     char Power1[5];
