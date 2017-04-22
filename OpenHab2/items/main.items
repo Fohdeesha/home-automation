@@ -4,9 +4,9 @@ Group Lights_LivingRoom
 
 Group WIFI_RGB_2G
 
-Switch AC_Cycle "AC Cycle" (All, gDashboard) {modbus="slave1:0"}
+Switch AC_Compressor "AC Cycle" (All, gDashboard) {modbus="slave1:0"}
 
-Switch SCR_Override "SCR_Override" (All, gDashboard) {modbus="slave13:0"}
+Switch SCR_Output "SCR_Override" (All, gDashboard) {modbus="slave13:0"}
 
 Switch AC_Up "AC Up" (All, gDashboard) {modbus="slave14:0"}
 
@@ -14,7 +14,7 @@ Switch AC_Down "AC Down" (All, gDashboard) {modbus="slave15:0"}
 
 Switch SCR "SCR Indicator" (All, gDashboard) {modbus="slave16:0"}
 
-Number Temp_Avg "Temp [%.1f]" (All, gDashboard) {modbus="slave2:0"}
+Number Temp_Main "Temp [%.1f]" (All, gDashboard) {modbus="slave2:0"}
 
 Number Humidity "Humidity [%.1f]" (All, gDashboard) {modbus="slave3:0"}
 
@@ -46,17 +46,9 @@ Number UPS2_Battery "UPS 2 Load [%.1f]" (All, gDashboard) {snmp="<[192.168.1.10/
 
 Number Thermostat "Thermostat [%d]" (All, gDashboard) {modbus="slave17:0"}
 
-Number Arduino1Pot "Arduino 1 Pot [%d]" (All, gDashboard) {modbus="slave18:0"}
+Switch HVACoff "HVAC Off" (All, gDashboard) {modbus="slave18:0"}
 
-Number Arduino1Temp "Arduino 1 Temp [%d]" (All, gDashboard) {modbus="slave20:0"}
-
-Switch FireTest "Fire Test" (All, gDashboard) {modbus="slave19:0"}
-
-Number Arduino1Flow "Arduino 1 Flow [%d]" (All, gDashboard) {modbus="slave21:0"}
-
-Number PLCArduinoTemp "PLC Arduino Temp [%d]" (All, gDashboard) {modbus="slave22:0"}
-
-Number PLCArduinoPot "PLC Arduino Pot [%d]" (All, gDashboard) {modbus="slave23:0"}
+Switch KWH_Reset "KWH Reset" (All, gDashboard) {modbus="slave19:0"}
 
 Switch HeatMode "Heat Mode" (All, gDashboard) {modbus="slave24:0"}
 
@@ -74,3 +66,5 @@ Number PSU2 "PSU2 [%.1f]" {mqtt="<[mosquitto:/read/arduino_LED/PSU2:state:defaul
 Number PSU3 "PSU3 [%.1f]" {mqtt="<[mosquitto:/read/arduino_LED/PSU3:state:default]"}
 
 Number PSU4 "PSU4 [%.1f]" {mqtt="<[mosquitto:/read/arduino_LED/PSU4:state:default]"}
+
+Number PSU5 "PSU5 [%.1f]" {mqtt="<[mosquitto:/read/arduino_LED/PSU5:state:default]"}

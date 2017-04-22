@@ -1,0 +1,8 @@
+Strategies {
+    every60s  : "* * * * * ?"
+}
+
+Items {
+   *   : strategy = everyChange, every60s
+
+}
