@@ -168,5 +168,10 @@ void loopADC()
   dtostrf(PSU5v,4,2,Power4);
 
   client.publish("/read/arduino_LED/PSU4",Power4);
+
+    char Power5[5];
+  dtostrf(LED24v,4,2,Power5);
+
+  client.publish("/read/arduino_LED/PSU5",Power5);
   
 }
