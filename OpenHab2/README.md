@@ -6,6 +6,6 @@ Due to its huge amount of available [Bindings](http://docs.openhab.org/addons/bi
 OpenHab is also being used for historical data logging, logging all values of all sensors and PLC automation data to an InfluxDB database, which is then displayed via Grafana. 
 
 <p align="center">
-  <img http://i.imgur.com/Motqw7s.png>
+  <img src="http://i.imgur.com/Motqw7s.png">
 </p>
 
