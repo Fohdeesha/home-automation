@@ -132,6 +132,7 @@ void loop()
 void loopADC() 
 {
   int16_t adc1, adc2, adc3, adc4;
+  int bytes = freeMemory();
 
   adc1 = ads.readADC_SingleEnded(0);
   adc2 = ads.readADC_SingleEnded(1);
@@ -142,10 +143,10 @@ void loopADC()
 // scale ADC output with calibrated voltage divider values and offset
   PSU24v1 = (adc1 + 16) / 1065.200;
   PSU24v2 = (adc2 + 16) / 1065.540;
-  PSU12v = (adc3 + 16) / 1067.542;
-  PSU5v = (adc4 + 16) / 1064.542;
-  LED24v = AnalogIn1 / 40.840;
-  int bytes = freeMemory();
+  PSU12v = (adc3 + 16) /  1067.542;
+  PSU5v = (adc4 + 16) /   1064.542;
+  LED24v = AnalogIn1 /    40.840;
+
 
   float c = tempsensor.readTempC();
   float temp = c * 9.0 / 5.0 + 32;
