@@ -50,6 +50,6 @@ void loopTempSense()
 {
    sensors.requestTemperatures();
    c = sensors.getTempCByIndex(0);
-   f = c * 1.8 + 32;
+   f = c * 1.8 + 32 - 0.2;
    fint = f * 100;
 }

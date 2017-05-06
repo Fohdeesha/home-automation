@@ -1,4 +1,3 @@
-import org.openhab.core.library.types.*
 
 var HSBType hsbValue
 var int SoffitR
@@ -6,19 +5,19 @@ var int SoffitG
 var int SoffitB
 var String RGBvalues
 
-rule "Set RGB 2 value"
+rule "Set Basement LED value"
  when
- Item fWIFI_RGB_2 changed
+ Item Basement_LED changed
  then
- hsbValue = fWIFI_RGB_2.state as HSBType
+ hsbValue = Basement_LED.state as HSBType
 
  SoffitR = hsbValue.red.intValue
  SoffitG = hsbValue.green.intValue
  SoffitB = hsbValue.blue.intValue
 
 
- RGBvalues= SoffitR.toString + "," + SoffitG.toString + "," + SoffitB.toString
- sendCommand( WIFI_RGB_2_RGB, RGBvalues )
+ RGBvalues = SoffitR.toString + "," + SoffitG.toString + "," + SoffitB.toString
+ sendCommand( Basement_LED_RGB, RGBvalues )
 
- logInfo( "fWIFI_RGB_2", RGBvalues )
+ logInfo( "Basement_LED", RGBvalues )
 end

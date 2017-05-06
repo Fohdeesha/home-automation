@@ -1,63 +1,53 @@
-Group gDashboard
 
-Group Lights_LivingRoom
 
-Group WIFI_RGB_2G
+Switch AC_Compressor "AC Cycle" {modbus="slave1:0"}
 
-Switch AC_Compressor "AC Cycle" (All, gDashboard) {modbus="slave1:0"}
+Switch SCR_Output "SCR_Override" {modbus="slave13:0"}
 
-Switch SCR_Output "SCR_Override" (All, gDashboard) {modbus="slave13:0"}
+Number Temp_Main "Temp [%.1f]" {modbus="slave2:0"}
 
-Switch AC_Up "AC Up" (All, gDashboard) {modbus="slave14:0"}
+Number Humidity "Humidity [%.1f]" {modbus="slave3:0"}
 
-Switch AC_Down "AC Down" (All, gDashboard) {modbus="slave15:0"}
+Number Watts "Watts [%.1f]" {modbus="slave4:0"}
 
-Switch SCR "SCR Indicator" (All, gDashboard) {modbus="slave16:0"}
+Number Line_A_Current "Line A Current [%.1f]" {modbus="slave5:0"}
 
-Number Temp_Main "Temp [%.1f]" (All, gDashboard) {modbus="slave2:0"}
+Number Line_B_Current "Line B Current [%.1f]" {modbus="slave6:0"}
 
-Number Humidity "Humidity [%.1f]" (All, gDashboard) {modbus="slave3:0"}
+Number Voltage "Voltage [%.1f]" {modbus="slave7:0"}
 
-Number Watts "Watts [%.1f]" (All, gDashboard) {modbus="slave4:0"}
+Number KWH "KWH [%f]" {modbus="slave8:0"}
 
-Number Line_A_Current "Line A Current [%.1f]" (All, gDashboard) {modbus="slave5:0"}
+Number Power_Factor "Power Factor [%.1f]" {modbus="slave9:0"}
 
-Number Line_B_Current "Line B Current [%.1f]" (All, gDashboard) {modbus="slave6:0"}
+Number Hertz "Hertz [%.1f]" {modbus="slave10:0"}
 
-Number Voltage "Voltage [%.1f]" (All, gDashboard) {modbus="slave7:0"}
+Number Estimated_Bill "Estimated Bill [%.1f]" {modbus="slave11:0"}
 
-Number KWH "KWH [%f]" (All, gDashboard) {modbus="slave8:0"}
+Number Line2Line_Volts "Line To Line Volts [%f]" {modbus="slave12:0"}
 
-Number Power_Factor "Power Factor [%.1f]" (All, gDashboard) {modbus="slave9:0"}
+Number UPS1_Load "UPS 1 Load [%.1f]" {snmp="<[192.168.1.16/3664:tripplite:.1.3.6.1.2.1.33.1.4.4.1.5.1:5000]"}
 
-Number Hertz "Hertz [%.1f]" (All, gDashboard) {modbus="slave10:0"}
+Number UPS1_Battery "UPS 1 Load [%.1f]" {snmp="<[192.168.1.16/3664:tripplite:.1.3.6.1.2.1.33.1.2.4.0:5000]"}
 
-Number Estimated_Bill "Estimated Bill [%.1f]" (All, gDashboard) {modbus="slave11:0"}
+Number UPS2_Load "UPS 2 Load [%.1f]" {snmp="<[192.168.1.10/3664:tripplite:.1.3.6.1.2.1.33.1.4.4.1.5.1:5000]"}
 
-Number Line2Line_Volts "Line To Line Volts [%f]" (All, gDashboard) {modbus="slave12:0"}
+Number UPS2_Battery "UPS 2 Load [%.1f]" {snmp="<[192.168.1.10/3664:tripplite:.1.3.6.1.2.1.33.1.2.4.0:5000]"}
 
-Number UPS1_Load "UPS 1 Load [%.1f]" (All, gDashboard) {snmp="<[192.168.1.16/3664:tripplite:.1.3.6.1.2.1.33.1.4.4.1.5.1:5000]"}
+Number Thermostat "Thermostat [%d]" {modbus="slave17:0"}
 
-Number UPS1_Battery "UPS 1 Load [%.1f]" (All, gDashboard) {snmp="<[192.168.1.16/3664:tripplite:.1.3.6.1.2.1.33.1.2.4.0:5000]"}
+Switch HeatMode "Heat Mode" {modbus="slave24:0"}
 
-Number UPS2_Load "UPS 2 Load [%.1f]" (All, gDashboard) {snmp="<[192.168.1.10/3664:tripplite:.1.3.6.1.2.1.33.1.4.4.1.5.1:5000]"}
+Switch FanOnly "Fan Only" {modbus="slave25:0"}
 
-Number UPS2_Battery "UPS 2 Load [%.1f]" (All, gDashboard) {snmp="<[192.168.1.10/3664:tripplite:.1.3.6.1.2.1.33.1.2.4.0:5000]"}
+Switch HVACoff "HVAC Off" {modbus="slave18:0"}
 
-Number Thermostat "Thermostat [%d]" (All, gDashboard) {modbus="slave17:0"}
+Switch KWH_Reset "KWH Reset" {modbus="slave19:0"}
 
-Switch HeatMode "Heat Mode" (All, gDashboard) {modbus="slave24:0"}
+Number SCRDimmer "SCR Dimmer [%d]" {modbus="slave26:0"}
 
-Switch FanOnly "Fan Only" (All, gDashboard) {modbus="slave25:0"}
-
-Switch HVACoff "HVAC Off" (All, gDashboard) {modbus="slave18:0"}
-
-Switch KWH_Reset "KWH Reset" (All, gDashboard) {modbus="slave19:0"}
-
-Number SCRDimmer "SCR Dimmer [%d]" (All, gDashboard) {modbus="slave26:0"}
-
-Color fWIFI_RGB_2 "RGB" <slider> (WIFI_RGB_2G)
-String WIFI_RGB_2_RGB (WIFI_RGB_2G) {mqtt=">[mosquitto:control/arduino_LED/livingroom/color:command:*:default]"}
+Color Basement_LED "Basement LED" 
+String Basement_LED_RGB {mqtt=">[mosquitto:control/arduino_LED/livingroom/color:command:*:default]"}
 
 Number PSU1 "PSU1 [%.1f]" {mqtt="<[mosquitto:/read/arduino_LED/PSU1:state:default]"}
 
