@@ -36,11 +36,15 @@ Number UPS2_Battery "UPS 2 Load [%.1f]" {snmp="<[192.168.1.10/3664:tripplite:.1.
 
 Number Thermostat "Thermostat [%d]" {modbus="slave17:0"}
 
+Number ScanTime "PLC Scan Time [%d]" {modbus="slave23:0"}
+
 Switch HeatMode "Heat Mode" {modbus="slave24:0"}
 
 Switch FanOnly "Fan Only" {modbus="slave25:0"}
 
 Switch HVACoff "HVAC Off" {modbus="slave18:0"}
+
+Switch TempError "Temp Error" {modbus="slave22:0"}
 
 Switch KWH_Reset "KWH Reset" {modbus="slave19:0"}
 

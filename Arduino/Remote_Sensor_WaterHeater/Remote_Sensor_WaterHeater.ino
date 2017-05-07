@@ -21,7 +21,7 @@ long ts;
 
 void setup() {
     // Config Modbus Serial (port, speed, byte format) 
-  mb.config(&myserial, 19200, 4);
+  mb.config(&myserial, 9600, 4);
 
     mb.setSlaveId(5);  
 
@@ -42,7 +42,7 @@ void loop() {
    }
 
        
-   delay(50);
+   delay(2);
    
 }
 
