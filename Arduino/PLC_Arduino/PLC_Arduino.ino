@@ -3,11 +3,9 @@
 #include <PubSubClient.h>
 #include <Wire.h>
 #include <Adafruit_ADS1015.h>
-#include "Adafruit_MCP9808.h"
 #include <MemoryFree.h>
 
 Adafruit_ADS1115 ads;
-Adafruit_MCP9808 tempsensor = Adafruit_MCP9808();
 
 byte mac[] = { 0x90, 0xA2, 0xDA, 0x0F, 0x5E, 0x69 };
 IPAddress ip(192, 168, 1, 21);
@@ -104,7 +102,6 @@ void setup()
   digitalWrite(4, HIGH);
   ads.setGain(GAIN_TWOTHIRDS);
   ads.begin();
-  tempsensor.begin();
 
   client.setServer(server, 1883);
   client.setCallback(callback);
@@ -148,15 +145,12 @@ void loopADC()
   LED24v = AnalogIn1 /    40.840;
 
 
-  float c = tempsensor.readTempC();
-  float temp = c * 9.0 / 5.0 + 32;
   
   Serial.print("24v Supply #1: "); Serial.println(PSU24v1);
   Serial.print("24v Supply #2: "); Serial.println(PSU24v2);
   Serial.print("12v Rail: "); Serial.println(PSU12v);
   Serial.print("5v Rail: "); Serial.println(PSU5v);
   Serial.print("LED 24v Supply: "); Serial.println(LED24v);
-  Serial.print("Temperature: "); Serial.println(temp);
   Serial.print("Free Memory Bytes: "); Serial.println(bytes);
 
   Serial.println(" ");
@@ -180,11 +174,6 @@ void loopADC()
     char Power5[10];
   dtostrf(LED24v,4,2,Power5);
   client.publish("/read/arduino_LED/PSU5",Power5);
-
-    char tempchar[10];
-  dtostrf(temp,4,2,tempchar);
-  client.publish("/read/arduino_LED/temp",tempchar);
-
 
     char memorychar[10];
   itoa(bytes,memorychar,10);
