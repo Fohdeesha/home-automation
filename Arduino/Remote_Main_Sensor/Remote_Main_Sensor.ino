@@ -10,6 +10,7 @@ SoftwareSerial myserial(8, 9);
 const int SlaveNum = 5;
 const int Temp_Register = 4;
 const int SrlSpeed = 9600;
+char      Name[] = "Remote Modbus MCP9808 Temp Sensor #1";
 char      Location[] = "Above Upstairs Stairwell";
 
 
@@ -24,12 +25,12 @@ void setup() {
 
   // Print Sensor Information over local USB for debugging 
   Serial.begin(9600);
-  Serial.println("Remote Modbus MCP9808 Temp Sensor #1");
+  Serial.println(Name);
+  Serial.print("Physical Location: "); Serial.println(Location);
   Serial.print("RS485 Bus Speed: "); Serial.print(SrlSpeed); Serial.println(" 8N1"); 
   Serial.print("Modbus Slave ID: "); Serial.println(SlaveNum);
   Serial.print("Modbus Temp Register: "); Serial.println(Temp_Register);
-  Serial.print("Physical Location: "); Serial.println(Location);
-  Serial.println(" ");
+
 
     tempsensor.begin();
     mb.config(&myserial, SrlSpeed, 4);
@@ -37,6 +38,8 @@ void setup() {
     
     mb.addHreg(TEMP_HREG);
     ts = millis();
+  Serial.println("Initialization Complete");
+  Serial.println(" ");
 }
 
 void loop() {
