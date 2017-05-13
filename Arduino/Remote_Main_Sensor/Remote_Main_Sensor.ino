@@ -10,7 +10,7 @@ SoftwareSerial myserial(8, 9);
 const int SlaveNum = 5;
 const int Temp_Register = 1;
 const int SrlSpeed = 9600;
-char      Name[] = "Remote Modbus MCP9808 Temp Sensor #1";
+char      Name[] = "Modbus High Accuracy Temp Sensor";
 char      Location[] = "Above Upstairs Stairwell";
 char      Version[] = "Firmware Build v1.1";
 
@@ -26,6 +26,7 @@ void setup() {
 
   // Print Sensor Information over local USB for debugging 
   Serial.begin(9600);
+  Serial.println("Initializing Local Serial Debug Output:");
   Serial.println(Name);
   Serial.println("Author: Fohdeesha");
   Serial.println(Version);
