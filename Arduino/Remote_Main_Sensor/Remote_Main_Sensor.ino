@@ -6,7 +6,7 @@
 Adafruit_MCP9808 tempsensor = Adafruit_MCP9808();
 SoftwareSerial myserial(8, 9);
 
-// Set Modbus Variables Here
+// Set All Variables Here Prease
 const int SlaveNum = 5;
 const int Temp_Register = 1;
 const int SrlSpeed = 9600;
