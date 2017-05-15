@@ -1,3 +1,5 @@
+#include <Arduino.h>
+
 #include <SPI.h>
 #include <Ethernet.h>
 #include <PubSubClient.h>
@@ -14,9 +16,9 @@ IPAddress server(192, 168, 1, 28);
 int SoffitR;
 int SoffitG;
 int SoffitB;
-int BLUE = 6;                   
-int GREEN = 5; 
-int RED = 3; 
+int BLUE = 6;
+int GREEN = 5;
+int RED = 3;
 int red1;
 int green1;
 int blue1;
@@ -52,7 +54,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
 
 
-  
+
   // print obtained values for debugging
 Serial.println();
 Serial.print("RED: ");
@@ -83,7 +85,7 @@ void reconnect() {
     // Attempt to connect
     if (client.connect("arduino_LED")) {
       Serial.println("connected");
-     client.publish("status/arduino_LED","Arduino LED is now online");     
+     client.publish("status/arduino_LED","Arduino LED is now online");
      client.subscribe("control/arduino_LED/#");
     } else {
       Serial.print("failed, rc=");
@@ -120,13 +122,13 @@ void loop()
   delay(50);
 
    //Call ADC/data parsing loop every 2s
-   if (millis() > ts + 2000) {   
+   if (millis() > ts + 2000) {
        ts = millis();
        loopADC();
-   } 
+   }
 }
 
-void loopADC() 
+void loopADC()
 {
   int16_t adc1, adc2, adc3, adc4;
   int bytes = freeMemory();
@@ -145,7 +147,7 @@ void loopADC()
   LED24v = AnalogIn1 /    40.840;
 
 
-  
+
   Serial.print("24v Supply #1: "); Serial.println(PSU24v1);
   Serial.print("24v Supply #2: "); Serial.println(PSU24v2);
   Serial.print("12v Rail: "); Serial.println(PSU12v);
@@ -154,7 +156,7 @@ void loopADC()
   Serial.print("Free Memory Bytes: "); Serial.println(bytes);
 
   Serial.println(" ");
-  
+
     char Power1[10];
   dtostrf(PSU24v1,4,2,Power1);
   client.publish("/read/arduino_LED/PSU1",Power1);
