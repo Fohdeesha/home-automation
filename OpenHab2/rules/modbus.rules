@@ -1,0 +1,31 @@
+    rule "Copy Garage Status to PLC On"
+        when
+            Item GarageStatus changed to ON
+        then
+               GarageStatusPLC.sendCommand(ON)
+
+    end
+    rule "Copy Garage Status to PLC Off"
+        when
+            Item GarageStatus changed to OFF
+        then
+                GarageStatusPLC.sendCommand(OFF)
+
+    end
+
+
+
+        rule "Copy Garage Relay PLC To Garage Relay On"
+            when
+                Item GarageRelayPLC changed to ON
+            then
+                    GarageRelay.sendCommand(ON)
+
+        end
+        rule "Copy Garage Relay PLC To Garage Relay Off"
+            when
+                Item GarageRelayPLC changed to OFF
+            then
+                    GarageRelay.sendCommand(OFF)
+
+        end

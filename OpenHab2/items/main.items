@@ -50,7 +50,7 @@ Switch KWH_Reset "KWH Reset" {modbus="slave19:0"}
 
 Number SCRDimmer "SCR Dimmer [%d]" {modbus="slave26:0"}
 
-Color Basement_LED "Basement LED" 
+Color Basement_LED "Basement LED"
 String Basement_LED_RGB {mqtt=">[mosquitto:control/arduino_LED/livingroom/color:command:*:default]"}
 
 Number PSU1 "PSU1 [%.1f]" {mqtt="<[mosquitto:/read/arduino_LED/PSU1:state:default]"}
@@ -64,3 +64,13 @@ Number PSU4 "PSU4 [%.1f]" {mqtt="<[mosquitto:/read/arduino_LED/PSU4:state:defaul
 Number PSU5 "PSU5 [%.1f]" {mqtt="<[mosquitto:/read/arduino_LED/PSU5:state:default]"}
 
 Number Arduino1_Memory "Arduino1 Memory [%.1f]" {mqtt="<[mosquitto:/read/arduino_LED/memory:state:default]"}
+
+Switch GarageStatus {mqtt="<[mosquitto:/read/GarageSwitch/status:state:default]"}
+
+Switch GarageRelay {mqtt=">[mosquitto:/control/GarageSwitch/relay:command:ON:1],>[mosquitto:/control/GarageSwitch/relay:command:OFF:0]"}
+
+Switch GarageStatusPLC {modbus="slave14:0"}
+
+Switch GarageRelayPLC {modbus="slave15:0"}
+
+Switch GarageHMI {modbus="slave16:0"}
