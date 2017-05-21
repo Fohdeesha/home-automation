@@ -1,8 +1,8 @@
 
 var HSBType hsbValue
-var int SoffitR
-var int SoffitG
-var int SoffitB
+var int red
+var int green
+var int blue
 var String RGBvalues
 
 rule "Set Basement LED value"
@@ -11,12 +11,12 @@ rule "Set Basement LED value"
  then
  hsbValue = Basement_LED.state as HSBType
 
- SoffitR = hsbValue.red.intValue
- SoffitG = hsbValue.green.intValue
- SoffitB = hsbValue.blue.intValue
+ red = hsbValue.red.intValue
+ green = hsbValue.green.intValue
+ blue = hsbValue.blue.intValue
 
 
- RGBvalues = SoffitR.toString + "," + SoffitG.toString + "," + SoffitB.toString
+ RGBvalues = red.toString + "," + green.toString + "," + blue.toString
  sendCommand( Basement_LED_RGB, RGBvalues )
 
  logInfo( "Basement_LED", RGBvalues )

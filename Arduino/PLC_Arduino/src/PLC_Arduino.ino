@@ -13,15 +13,15 @@ byte mac[] = { 0x90, 0xA2, 0xDA, 0x0F, 0x5E, 0x69 };
 IPAddress ip(192, 168, 1, 21);
 IPAddress server(192, 168, 1, 28);
 
-int SoffitR;
-int SoffitG;
-int SoffitB;
-int BLUE = 6;
-int GREEN = 5;
-int RED = 3;
-int red1;
-int green1;
-int blue1;
+int redraw;
+int greenraw;
+int blueraw;
+int redpin = 3;
+int greenpin = 5;
+int bluepin = 6;
+int red;
+int green;
+int blue;
 long ts;
 float PSU24v1;
 float PSU24v2;
@@ -35,22 +35,22 @@ void callback(char* topic, byte* payload, unsigned int length) {
   Serial.print(topic);
   Serial.print("] ");
   payload[length] = '\0';
-      if(String(topic) == "control/arduino_LED/livingroom/color") {
+      if(String(topic) == "/control/Arduino_PLC/color") {
     // convert payload to String
     String value = String((char*)payload);
     //value.trim();
     // split string at every "," and store in proper variable
     // convert final result to integer
-    SoffitR = value.substring(0,value.indexOf(',')).toInt();
-    SoffitG = value.substring(value.indexOf(',')+1,value.lastIndexOf(',')).toInt();
-    SoffitB = value.substring(value.lastIndexOf(',')+1).toInt();
+    redraw = value.substring(0,value.indexOf(',')).toInt();
+    greenraw = value.substring(value.indexOf(',')+1,value.lastIndexOf(',')).toInt();
+    blueraw = value.substring(value.lastIndexOf(',')+1).toInt();
 
-  int red1 = SoffitR * 2.55;
-  int green1 = SoffitG * 2.55;
-  int blue1 = (SoffitB * 0.7) * 2.55;
-  analogWrite(RED, red1);
-  analogWrite(GREEN, green1);
-  analogWrite(BLUE, blue1);
+  int red = redraw * 2.55;
+  int green = greenraw * 2.55;
+  int blue = (blueraw * 0.7) * 2.55;
+  analogWrite(redpin, red);
+  analogWrite(greenpin, green);
+  analogWrite(bluepin, blue);
 
 
 
@@ -58,16 +58,14 @@ void callback(char* topic, byte* payload, unsigned int length) {
   // print obtained values for debugging
 Serial.println();
 Serial.print("RED: ");
-Serial.println(red1);
-//client.publish("status/arduino_LED", SoffitR);
+Serial.println(red);
 
 Serial.print("GREEN: ");
-Serial.println(green1);
-//client.publish("status/arduino_LED", SoffitG);
+Serial.println(green);
 
 Serial.print("BLUE: ");
-Serial.println(blue1);
-//client.publish("status/arduino_LED", int SoffitB);
+Serial.println(blue);
+
 Serial.println();
 //Serial.flush();
 
@@ -83,10 +81,10 @@ void reconnect() {
   while (!client.connected()) {
     Serial.print("Attempting MQTT connection...");
     // Attempt to connect
-    if (client.connect("arduino_LED")) {
+    if (client.connect("Arduino_PLC")) {
       Serial.println("connected");
-     client.publish("status/arduino_LED","Arduino LED is now online");
-     client.subscribe("control/arduino_LED/#");
+     client.publish("/status/Arduino_PLC","Arduino PLC is now online");
+     client.subscribe("/control/Arduino_PLC/#");
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
@@ -159,25 +157,25 @@ void loopADC()
 
     char Power1[10];
   dtostrf(PSU24v1,4,2,Power1);
-  client.publish("/read/arduino_LED/PSU1",Power1);
+  client.publish("/read/Arduino_PLC/PSU1",Power1);
 
     char Power2[10];
   dtostrf(PSU24v2,4,2,Power2);
-  client.publish("/read/arduino_LED/PSU2",Power2);
+  client.publish("/read/Arduino_PLC/PSU2",Power2);
 
     char Power3[10];
   dtostrf(PSU12v,4,2,Power3);
-  client.publish("/read/arduino_LED/PSU3",Power3);
+  client.publish("/read/Arduino_PLC/PSU3",Power3);
 
     char Power4[10];
   dtostrf(PSU5v,4,2,Power4);
-  client.publish("/read/arduino_LED/PSU4",Power4);
+  client.publish("/read/Arduino_PLC/PSU4",Power4);
 
     char Power5[10];
   dtostrf(LED24v,4,2,Power5);
-  client.publish("/read/arduino_LED/PSU5",Power5);
+  client.publish("/read/Arduino_PLC/PSU5",Power5);
 
     char memorychar[10];
   itoa(bytes,memorychar,10);
-  client.publish("/read/arduino_LED/memory",memorychar);
+  client.publish("/read/Arduino_PLC/memory",memorychar);
 }
