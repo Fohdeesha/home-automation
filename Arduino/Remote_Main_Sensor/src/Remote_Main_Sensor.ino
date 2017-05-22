@@ -9,7 +9,7 @@ Adafruit_MCP9808 tempsensor = Adafruit_MCP9808();
 SoftwareSerial myserial(8, 9);
 
 // Set All Variables Here Prease
-const int SlaveNum = 5;
+const int SlaveNum = 4;
 const int Temp_Register = 1;
 const int SrlSpeed = 9600;
 char      Name[] = "Modbus High Accuracy Temp Sensor";

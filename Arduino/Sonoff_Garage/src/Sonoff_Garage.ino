@@ -7,7 +7,7 @@
 
 #define NAME "GarageSwitch"
 #define SSID "Wu Tang LAN"
-#define PASS "noprease"
+#define PASS "nonono"
 
 #define STATIC_IP    //comment out for DHCP
 #ifdef STATIC_IP
@@ -19,7 +19,7 @@ IPAddress subnet(255, 255, 255, 0);
 #define MQTT_SERVER "192.168.1.28"
 #define MQTT_PORT 1883
 
-#define OTA_PASS "noprease"
+#define OTA_PASS "nonono"
 #define OTA_PORT 8266
 
 const char *cmndTopic1 = "/control/" NAME "/relay";
