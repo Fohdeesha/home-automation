@@ -2,11 +2,12 @@
 
 #include <Modbus.h>
 #include <ModbusSerial.h>
-#include <SoftwareSerial.h>
+#include <AltSoftSerial.h>
 #include <Wire.h>
 #include "Adafruit_MCP9808.h"
 Adafruit_MCP9808 tempsensor = Adafruit_MCP9808();
-SoftwareSerial myserial(8, 9);
+AltSoftSerial altSerial;
+ModbusSerial mb;
 
 // Set All Variables Here Prease
 const int SlaveNum = 4;
@@ -22,7 +23,6 @@ float f;
 int fint;
 long ts;
 const int TEMP_HREG = Temp_Register - 1;
-ModbusSerial mb;
 
 void setup() {
 
@@ -39,7 +39,7 @@ void setup() {
 
 
     tempsensor.begin();
-    mb.config(&myserial, SrlSpeed, 4);
+    mb.config(&altSerial, SrlSpeed, 4);
     mb.setSlaveId(SlaveNum);
 
     mb.addHreg(TEMP_HREG);

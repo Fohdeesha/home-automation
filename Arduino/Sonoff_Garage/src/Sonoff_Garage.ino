@@ -7,7 +7,7 @@
 
 #define NAME "GarageSwitch"
 #define SSID "Wu Tang LAN"
-#define PASS "nonono"
+#define PASS "no"
 
 #define STATIC_IP    //comment out for DHCP
 #ifdef STATIC_IP
@@ -19,7 +19,7 @@ IPAddress subnet(255, 255, 255, 0);
 #define MQTT_SERVER "192.168.1.28"
 #define MQTT_PORT 1883
 
-#define OTA_PASS "nonono"
+#define OTA_PASS "no"
 #define OTA_PORT 8266
 
 const char *cmndTopic1 = "/control/" NAME "/relay";
@@ -127,16 +127,14 @@ void buttonChangeCallback() {
 }
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
   Serial.println("Initialising");
   pinMode(RELAY_PIN, OUTPUT);
   digitalWrite(RELAY_PIN, LOW);
   pinMode(BUTTON_PIN, INPUT_PULLUP);
   pinMode(LED_PIN, OUTPUT);
-
   digitalWrite(LED_PIN, HIGH); //LED off.
 
-  Serial.begin(115200);
   initWifi();
 
   client.setServer(MQTT_SERVER, MQTT_PORT);
