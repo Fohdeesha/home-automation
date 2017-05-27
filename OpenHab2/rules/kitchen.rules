@@ -1,0 +1,23 @@
+
+var HSBType hsbValue
+var int red
+var int green
+var int blue
+var String RGBvalues
+
+rule "Set Kitchen LED value"
+ when
+ Item Kitchen_LED changed
+ then
+ hsbValue = Kitchen_LED.state as HSBType
+
+ red = hsbValue.red.intValue
+ green = hsbValue.green.intValue
+ blue = hsbValue.blue.intValue
+
+
+ RGBvalues = red.toString + "," + green.toString + "," + blue.toString
+ sendCommand( Kitchen_LED_RGB, RGBvalues )
+
+ logInfo( "Kitchen_LED", RGBvalues )
+end

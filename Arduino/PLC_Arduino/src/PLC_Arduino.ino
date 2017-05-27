@@ -1,5 +1,4 @@
 #include <Arduino.h>
-
 #include <SPI.h>
 #include <Ethernet.h>
 #include <PubSubClient.h>
@@ -27,7 +26,6 @@ float PSU24v1;
 float PSU24v2;
 float PSU12v;
 float PSU5v;
-int AnalogIn1 = 0;
 float LED24v;
 
 void callback(char* topic, byte* payload, unsigned int length) {
@@ -47,7 +45,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
   int red = redraw * 2.55;
   int green = greenraw * 2.55;
-  int blue = (blueraw * 0.7) * 2.55;
+  int blue = (blueraw * 0.6) * 2.55;
   analogWrite(redpin, red);
   analogWrite(greenpin, green);
   analogWrite(bluepin, blue);
@@ -133,21 +131,21 @@ void loop()
 
 void loopADC()
 {
-  int16_t adc1, adc2, adc3, adc4;
+  int adc1, adc2, adc3, adc4, adc5;
   int bytes = freeMemory();
 
   adc1 = ads.readADC_SingleEnded(0);
   adc2 = ads.readADC_SingleEnded(1);
   adc3 = ads.readADC_SingleEnded(2);
   adc4 = ads.readADC_SingleEnded(3);
-  AnalogIn1 = analogRead(A0);
+  adc5 = analogRead(A0);
 
 // scale ADC output with calibrated voltage divider values and offset
   PSU24v1 = (adc1 + 16) / 1065.200;
   PSU24v2 = (adc2 + 16) / 1065.540;
-  PSU12v = (adc3 + 16) /  1067.542;
-  PSU5v = (adc4 + 16) /   1064.542;
-  LED24v = AnalogIn1 /    40.840;
+  PSU12v =  (adc3 + 16) / 1067.542;
+  PSU5v =   (adc4 + 16) / 1064.542;
+  LED24v =   adc5       /   40.840;
 
 
 

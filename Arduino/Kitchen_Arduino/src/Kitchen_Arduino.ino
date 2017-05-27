@@ -36,13 +36,10 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
   int red = redraw * 2.55;
   int green = greenraw * 2.55;
-  int blue = (blueraw * 0.7) * 2.55;
+  int blue = (blueraw * 0.6) * 2.55;
   analogWrite(redpin, red);
   analogWrite(greenpin, green);
   analogWrite(bluepin, blue);
-
-
-
 
   // print obtained values for debugging
 Serial.println();
@@ -89,6 +86,10 @@ void setup()
   Serial.begin(9600);
   pinMode(4, OUTPUT);
   digitalWrite(4, HIGH);
+
+  // Change pin 3 from Phase Correct PWM to Fast PWM to match Pin 5 & 6 PWM frequency (976hz)
+  TCCR2A = _BV(COM2A1) | _BV(COM2B1) | _BV(WGM21) | _BV(WGM20);
+  TCCR2B = _BV(CS22);
 
   client.setServer(server, 1883);
   client.setCallback(callback);

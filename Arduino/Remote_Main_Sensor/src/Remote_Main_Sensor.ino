@@ -1,21 +1,21 @@
 #include <Arduino.h>
-
 #include <Modbus.h>
 #include <ModbusSerial.h>
-#include <AltSoftSerial.h>
+#include <SoftwareSerial.h>
 #include <Wire.h>
 #include "Adafruit_MCP9808.h"
 Adafruit_MCP9808 tempsensor = Adafruit_MCP9808();
-AltSoftSerial altSerial;
+SoftwareSerial myserial(8, 9);
 ModbusSerial mb;
 
 // Set All Variables Here Prease
-const int SlaveNum = 4;
-const int Temp_Register = 1;
-const int SrlSpeed = 9600;
+const int SlaveNum = 4;        //Modbus Slave ID
+const int Temp_Register = 1;   //Modbus Register With Temp
+const int SrlSpeed = 9600;     //RS485 Bus Speed
 char      Name[] = "Modbus High Accuracy Temp Sensor";
+char      Author[] = "Fohdeesha";
 char      Location[] = "Above Upstairs Stairwell";
-char      Version[] = "Firmware Build v1.1";
+char      Version[] = "Firmware Build v1.2";
 
 
 float c;
@@ -30,7 +30,7 @@ void setup() {
   Serial.begin(9600);
   Serial.println("Initializing Local Serial Debug Output:");
   Serial.println(Name);
-  Serial.println("Author: Fohdeesha");
+  Serial.print("Author: "); Serial.println(Author);
   Serial.println(Version);
   Serial.print("Physical Location: "); Serial.println(Location);
   Serial.print("RS485 Bus Speed: "); Serial.print(SrlSpeed); Serial.println(" 8N1");
@@ -39,7 +39,7 @@ void setup() {
 
 
     tempsensor.begin();
-    mb.config(&altSerial, SrlSpeed, 4);
+    mb.config(&myserial, SrlSpeed, 4);
     mb.setSlaveId(SlaveNum);
 
     mb.addHreg(TEMP_HREG);
@@ -58,9 +58,6 @@ void loop() {
        ts = millis();
        loopTempSense();
    }
-
-   //delay(5);
-
 }
 
 void loopTempSense()
