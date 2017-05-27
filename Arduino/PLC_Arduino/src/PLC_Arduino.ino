@@ -11,47 +11,40 @@ Adafruit_ADS1115 ads;
 byte mac[] = { 0xDE, 0xA2, 0xDA, 0x0F, 0x5E, 0x69 };
 IPAddress ip(192, 168, 1, 21);
 IPAddress server(192, 168, 1, 28);
+unsigned long ts = millis();
 
-int redraw;
-int greenraw;
-int blueraw;
 int redpin = 3;
 int greenpin = 5;
 int bluepin = 6;
-int red;
-int green;
-int blue;
-long ts;
-float PSU24v1;
-float PSU24v2;
-float PSU12v;
-float PSU5v;
-float LED24v;
 
 void callback(char* topic, byte* payload, unsigned int length) {
+
+  int redraw;
+  int greenraw;
+  int blueraw;
+  int red;
+  int green;
+  int blue;
+
   Serial.print("Message arrived [");
   Serial.print(topic);
   Serial.print("] ");
   payload[length] = '\0';
       if(String(topic) == "/control/Arduino_PLC/color") {
     // convert payload to String
-    String value = String((char*)payload);
-    //value.trim();
+    String value = String((char*)payload);;
     // split string at every "," and store in proper variable
     // convert final result to integer
     redraw = value.substring(0,value.indexOf(',')).toInt();
     greenraw = value.substring(value.indexOf(',')+1,value.lastIndexOf(',')).toInt();
     blueraw = value.substring(value.lastIndexOf(',')+1).toInt();
 
-  int red = redraw * 2.55;
-  int green = greenraw * 2.55;
-  int blue = (blueraw * 0.6) * 2.55;
+  red =   redraw   * 2.55;
+  green = greenraw * 2.55;
+  blue =  blueraw  * 1.50;
   analogWrite(redpin, red);
   analogWrite(greenpin, green);
   analogWrite(bluepin, blue);
-
-
-
 
   // print obtained values for debugging
 Serial.println();
@@ -65,7 +58,6 @@ Serial.print("BLUE: ");
 Serial.println(blue);
 
 Serial.println();
-//Serial.flush();
 
   }
 
@@ -110,7 +102,6 @@ TCCR2B = _BV(CS22);
   client.setCallback(callback);
 
   Ethernet.begin(mac, ip);
-  ts = millis();
 }
 
 void loop()
@@ -132,6 +123,7 @@ void loop()
 void loopADC()
 {
   int adc1, adc2, adc3, adc4, adc5;
+  float PSU24v1, PSU24v2, PSU12v, PSU5v, LED24v;
   int bytes = freeMemory();
 
   adc1 = ads.readADC_SingleEnded(0);
