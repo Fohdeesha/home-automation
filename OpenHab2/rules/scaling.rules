@@ -1,0 +1,6 @@
+rule "Scale UPS1 Batt Voltage"
+when
+    Item UPS1_BattVoltRaw received update
+then
+    UPS1_BattVolt.sendCommand((UPS1_BattVoltRaw.state as DecimalType) / 10)
+end

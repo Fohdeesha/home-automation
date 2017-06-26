@@ -1,0 +1,97 @@
+<div style="position:relative; width:100%; height:100%;">
+<iframe width="100%" height="100%" name="New Widget" ng-src="http://web.home.lan/porchhab/" ng-style="{ 'background-color': vm.widget.background }" frameborder="0" src="http://web.home.lan/porchhab/"> </iframe>
+<a href="http://web.home.lan/porchfull/" style="position:absolute; top:0; left:0; display:inline-block; width:100%; height:100%; z-index:5;" ></a>
+</div>
+
+----------------------------------------
+
+<div style="position:relative; width:100%; height:100%;">
+<iframe width="100%" height="100%" name="New Widget" ng-src="http://web.home.lan/garagehab/" ng-style="{ 'background-color': vm.widget.background }" frameborder="0" src="http://web.home.lan/garagehab/"> </iframe>
+<a href="http://web.home.lan/garagefull/" style="position:absolute; top:0; left:0; display:inline-block; width:100%; height:100%; z-index:5;" ></a>
+</div>
+
+----------------------------------------
+
+  <button class="btn" style="width: 100%; height: 100%; color: white; padding: 0; background: inherit; outline: none"
+  ng-click="sendCmd(config.item_target, +itemValue(config.item_target)+config.value_target)">
+	<span>
+
+	</span>
+     <img src="http://192.168.1.28:8080/static/img/up.png" width="85%" />
+
+  </span>
+</button>
+
+----------------------------------------
+
+  <button class="btn" style="width: 100%; height: 100%; color: white; padding: 0; background: inherit; outline: none"
+  ng-click="sendCmd(config.item_target, +itemValue(config.item_target)-config.value_target)">
+	<span>
+
+	</span>
+     <img src="http://192.168.1.28:8080/static/img/down.png" width="85%" />
+
+  </span>
+</button>
+
+
+-----------------------------------------
+
+<div ng-init="ServerPath='http://192.168.1.28:8080/static'; IconSet='flat_colorful'">
+<link rel="stylesheet" type="text/css" href="{{ServerPath}}/layouts/example.css" />
+</div>
+<br>
+<table align="center" id="weather-table">
+	<tr>
+		<td rowspan="2"><img id="weather-icon" src="{{ServerPath}}/images/{{IconSet}}/{{itemValue('Condition0').replace(' ','-') | lowercase }}.png"/></td>
+		<td id="weather-temp">{{'%.1f' | sprintf:itemValue('Temperature')}}</td>
+		<td id="weather-temp-sign">°F</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<table id="weather-table-details">
+				<tr>
+					<td>Humidity:&nbsp;</td>
+					<td>{{itemValue('HumidityW')}} %</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<p/>
+<br>
+<table align="center" id="weather-forecast-table">
+	<tr>
+		<td>Today</td>
+		<td>{{itemValue('ObservationTime1') | date:'EEEE'}}</td>
+		<td>{{itemValue('ObservationTime2') | date:'EEEE'}}</td>
+	</tr>
+	<tr>
+		<td>
+			<img src="{{ServerPath}}/images/{{IconSet}}/{{itemValue('Condition0').replace(' ','-') | lowercase }}.png"/>
+			<p>{{itemValue('Condition0')}}</p>
+		</td>
+		<td>
+			<img src="{{ServerPath}}/images/{{IconSet}}/{{itemValue('Condition1').replace(' ','-') | lowercase }}.png"/>
+			<p>{{itemValue('Condition1')}}</p>
+		</td>
+		<td>
+			<img src="{{ServerPath}}/images/{{IconSet}}/{{itemValue('Condition2').replace(' ','-') | lowercase }}.png"/>
+			<p>{{itemValue('Condition2')}}</p>
+		</td>
+	</tr>
+	<tr>
+		<td class="col-xs-4" style="color:red">{{'%.0f' | sprintf:itemValue('Temp_Max0')}} °F</td>
+		<td class="col-xs-4" style="color:red">{{'%.0f' | sprintf:itemValue('Temp_Max1')}} °F</td>
+		<td class="col-xs-4" style="color:red">{{'%.0f' | sprintf:itemValue('Temp_Max2')}} °F</td>
+	</tr>
+	<tr>
+		<td class="col-xs-4" style="color:#0db9f0">{{'%.0f' | sprintf:itemValue('Temp_Min0')}} °F</td>
+		<td class="col-xs-4" style="color:#0db9f0">{{'%.0f' | sprintf:itemValue('Temp_Min1')}} °F</td>
+		<td class="col-xs-4" style="color:#0db9f0">{{'%.0f' | sprintf:itemValue('Temp_Min2')}} °F</td>
+	</tr>
+</table>
+<br>
+<div style="position:relative; width:100%; height:100%;">
+<iframe width="100%" height="100%" name="New Widget" ng-src="http://home.lan/time.html" ng-style="{ 'background-color': vm.widget.background }" frameborder="0" src="http://web.home.lan/garagehab/"> </iframe>
+</div>

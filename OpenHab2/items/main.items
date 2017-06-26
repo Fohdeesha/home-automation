@@ -1,6 +1,10 @@
 
 
-Switch AC_Compressor "AC Cycle" {modbus="slave1:0"}
+Switch AC_Compressor {modbus="slave1:0"}
+
+Switch AC_Fan {modbus="slave30:0"}
+
+Switch AC_RVS {modbus="slave31:0"}
 
 Switch SCR_Output "SCR_Override" {modbus="slave13:0"}
 
@@ -26,19 +30,35 @@ Number Estimated_Bill "Estimated Bill [%.1f]" {modbus="slave11:0"}
 
 Number Line2Line_Volts "Line To Line Volts [%f]" {modbus="slave12:0"}
 
-Number UPS1_Load "UPS 1 Load [%.1f]" {snmp="<[192.168.1.16/3664:tripplite:.1.3.6.1.2.1.33.1.4.4.1.5.1:5000]"}
+Number UPS1_Load {snmp="<[192.168.1.36/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.4.4.1.5.1:5000]"}
 
-Number UPS1_Battery "UPS 1 Load [%.1f]" {snmp="<[192.168.1.16/3664:tripplite:.1.3.6.1.2.1.33.1.2.4.0:5000]"}
+Number UPS1_Battery {snmp="<[192.168.1.36/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.2.4.0:5000]"}
 
-Number UPS2_Load "UPS 2 Load [%.1f]" {snmp="<[192.168.1.10/3664:tripplite:.1.3.6.1.2.1.33.1.4.4.1.5.1:5000]"}
+Number UPS1_Input {snmp="<[192.168.1.36/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.3.3.1.3.1:5000]"}
 
-Number UPS2_Battery "UPS 2 Load [%.1f]" {snmp="<[192.168.1.10/3664:tripplite:.1.3.6.1.2.1.33.1.2.4.0:5000]"}
+Number UPS1_BattVoltRaw {snmp="<[192.168.1.36/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.2.5.0:5000]"}
+
+Number UPS1_BattVolt
+
+Number UPS1_Temp {snmp="<[192.168.1.36/3664:v2c:tripplite:1.3.6.1.2.1.33.1.2.7.0:5000]"}
+
+Number UPS2_Load {snmp="<[192.168.1.10/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.4.4.1.5.1:5000]"}
+
+Number UPS2_Battery {snmp="<[192.168.1.10/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.2.4.0:5000]"}
+
+Number UPS2_Input {snmp="<[192.168.1.10/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.3.3.1.3.1:5000]"}
+
+Number UPS2_BattVolt {snmp="<[192.168.1.10/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.2.5.0:5000]"}
+
+Number UPS2_Temp {snmp="<[192.168.1.10/3664:v2c:tripplite:1.3.6.1.2.1.33.1.2.7.0:5000]"}
 
 Number Thermostat "Thermostat [%d]" {modbus="slave17:0"}
 
 Number ScanTime {modbus="slave23:0"}
 
 Number Deadband {modbus="slave21:0"}
+
+Number CostAvg "Average Cost"
 
 Switch HeatMode "Heat Mode" {modbus="slave24:0"}
 
@@ -81,3 +101,30 @@ Switch GarageStatusPLC {modbus="slave14:0"}
 Switch GarageRelayPLC {modbus="slave15:0"}
 
 Switch GarageHMI {modbus="slave16:0"}
+
+Switch UtilityPower "Utility Power Status" {modbus="slave27:0"}
+
+Number RemoteTemp {mqtt="<[mosquitto:/read/RemoteTemp/status:state:default]"}
+
+Number CommsWatch {modbus="slave28:0"}
+
+Switch FireTest {modbus="slave29:0"}
+
+Number   Temperature       {weather="locationId=sandshome, type=temperature, property=current"}
+Number   	HumidityW        {weather="locationId=sandshome, type=atmosphere, property=humidity"}
+Number   	Pressure         {weather="locationId=sandshome, type=atmosphere, property=pressure"}
+
+DateTime ObservationTime0  {weather="locationId=sandshome, forecast=0, type=condition, property=observationTime"}
+DateTime ObservationTime1  {weather="locationId=sandshome, forecast=1, type=condition, property=observationTime"}
+DateTime ObservationTime2  {weather="locationId=sandshome, forecast=2, type=condition, property=observationTime"}
+
+Number   Temp_Min0         {weather="locationId=sandshome, forecast=0, type=temperature, property=min"}
+Number   Temp_Max0         {weather="locationId=sandshome, forecast=0, type=temperature, property=max"}
+Number   Temp_Min1         {weather="locationId=sandshome, forecast=1, type=temperature, property=min"}
+Number   Temp_Max1         {weather="locationId=sandshome, forecast=1, type=temperature, property=max"}
+Number   Temp_Min2         {weather="locationId=sandshome, forecast=2, type=temperature, property=min"}
+Number   Temp_Max2         {weather="locationId=sandshome, forecast=2, type=temperature, property=max"}
+
+String   Condition0        {weather="locationId=sandshome, forecast=0, type=condition, property=commonId"}
+String   Condition1        {weather="locationId=sandshome, forecast=1, type=condition, property=commonId"}
+String   Condition2        {weather="locationId=sandshome, forecast=2, type=condition, property=commonId"}

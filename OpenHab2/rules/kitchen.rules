@@ -1,4 +1,3 @@
-
 var HSBType hsbValue
 var int red
 var int green
