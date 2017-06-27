@@ -4,14 +4,16 @@ body {
 }
 
 table {
-	border-spacing: 10px;
+	border-spacing: 1px;
 	border: 1px;
 	padding: 0px;
-	width: 100px;
+	width: 0px;
+        padding-top: 0px;
 }
 
 #weather-table, #weather-location-name{
 	padding-bottom: 0px;
+        padding-top: 0px;
 }
 
 #weather-icon {

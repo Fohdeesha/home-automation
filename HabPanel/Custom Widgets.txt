@@ -40,12 +40,15 @@
 <div ng-init="ServerPath='http://192.168.1.28:8080/static'; IconSet='flat_colorful'">
 <link rel="stylesheet" type="text/css" href="{{ServerPath}}/layouts/example.css" />
 </div>
-<br>
+<style type="text/css">
+    body {
+    overflow:hidden;
+}
+  </style>
 <table align="center" id="weather-table">
 	<tr>
 		<td rowspan="2"><img id="weather-icon" src="{{ServerPath}}/images/{{IconSet}}/{{itemValue('Condition0').replace(' ','-') | lowercase }}.png"/></td>
-		<td id="weather-temp">{{'%.1f' | sprintf:itemValue('Temperature')}}</td>
-		<td id="weather-temp-sign">°F</td>
+		<td id="weather-temp">{{'%.1f' | sprintf:itemValue('Temperature')}}°F</td>
 	</tr>
 	<tr>
 		<td colspan="2">
@@ -58,7 +61,6 @@
 		</td>
 	</tr>
 </table>
-<p/>
 <br>
 <table align="center" id="weather-forecast-table">
 	<tr>
@@ -91,7 +93,5 @@
 		<td class="col-xs-4" style="color:#0db9f0">{{'%.0f' | sprintf:itemValue('Temp_Min2')}} °F</td>
 	</tr>
 </table>
-<br>
-<div style="position:relative; width:100%; height:100%;">
-<iframe width="100%" height="100%" name="New Widget" ng-src="http://home.lan/time.html" ng-style="{ 'background-color': vm.widget.background }" frameborder="0" src="http://web.home.lan/garagehab/"> </iframe>
-</div>
+  <br>
+<iframe name="New Widget" ng-src="http://home.lan/time.html" frameborder="0" src="http://web.home.lan/garagehab/"> </iframe>
