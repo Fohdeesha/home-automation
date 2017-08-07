@@ -1,0 +1,86 @@
+PORCH.................
+
+<div style="position:relative; width:100%; height:100%;">
+<iframe width="100%" height="100%" name="New Widget" ng-src="http://web.home.lan/porchhab/" ng-style="{ 'background-color': vm.widget.background }" frameborder="0" src="http://web.home.lan/porchhab/"> </iframe>
+<a href="http://web.home.lan/porchfull/" style="position:absolute; top:0; left:0; display:inline-block; width:100%; height:100%; z-index:5;" ></a>
+</div>
+
+
+GARAGE..................
+
+<div style="position:relative; width:100%; height:100%;">
+<iframe width="100%" height="100%" name="New Widget" ng-src="http://web.home.lan/garagehab/" ng-style="{ 'background-color': vm.widget.background }" frameborder="0" src="http://web.home.lan/garagehab/"> </iframe>
+<a href="http://web.home.lan/garagefull/" style="position:absolute; top:0; left:0; display:inline-block; width:100%; height:100%; z-index:5;" ></a>
+</div>
+
+
+DRIVEWAY..............
+
+<div style="position:relative; width:100%; height:100%;">
+<iframe width="100%" height="100%" name="New Widget" ng-src="http://web.home.lan/drivewayhab/" ng-style="{ 'background-color': vm.widget.background }" frameborder="0" src="http://web.home.lan/drivewayhab/"> </iframe>
+<a href="http://web.home.lan/drivewayfull/" style="position:absolute; top:0; left:0; display:inline-block; width:100%; height:100%; z-index:5;" ></a>
+</div>
+
+
+UP---------------------------------
+
+  <button class="btn" style="width: 100%; height: 100%; color: white; padding: 0; background: inherit; outline: none"
+  ng-click="sendCmd(config.item_target, +itemValue(config.item_target)+config.value_target)">
+	<span>
+
+	</span>
+     <img src="http://192.168.1.28:8080/static/img/up.png" width="85%" />
+
+  </span>
+</button>
+
+
+DOWN---------------------------------
+
+  <button class="btn" style="width: 100%; height: 100%; color: white; padding: 0; background: inherit; outline: none"
+  ng-click="sendCmd(config.item_target, +itemValue(config.item_target)-config.value_target)">
+	<span>
+
+	</span>
+     <img src="http://192.168.1.28:8080/static/img/down.png" width="85%" />
+
+  </span>
+</button>
+
+
+DATIMETIME.....................
+
+<iframe name="New Widget" frameborder="0" src="http://home.lan/time.html"> </iframe>
+
+
+WEATHER-----------------------------------
+
+<div ng-init="ServerPath='http://192.168.1.28:8080/static'; IconSet='flat_colorful'">
+<link rel="stylesheet" type="text/css" href="http://192.168.1.28:8080/static/layouts/example.css" />
+</div>
+<style>
+#weather-table {
+	border-spacing: 1px;
+	border: 1px;
+	padding: 0px;
+   color: white;
+	font-size: 30px;
+	font-family: Courier;
+	width: 0px;
+        padding-top: 0px;
+}
+</style>
+<table align="center" id="weather-table">
+	<tr>
+		<td rowspan="3"><img id="weather-icon" src="{{ServerPath}}/images/{{IconSet}}/{{itemValue('Condition0').replace(' ','-') | lowercase }}.png"/></td>
+		<td id="weather-temp">{{'%.1f' | sprintf:itemValue('Temperature')}}°F</td>
+	</tr>
+	<tr>
+					<td>Humidity:</td>
+				</tr>
+  	<tr>
+
+					<td>{{itemValue('HumidityW')}}%</td>
+				</tr>
+			</table>
+

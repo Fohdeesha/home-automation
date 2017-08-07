@@ -110,20 +110,20 @@ Number CommsWatch {modbus="slave28:0"}
 
 Switch FireTest {modbus="slave29:0"}
 
-Number   Temperature       {weather="locationId=sandshome, type=temperature, property=current"}
+Number   Temperature       {weather="locationId=sandshome, type=temperature, property=current, unit=fahrenheit"}
 Number   	HumidityW        {weather="locationId=sandshome, type=atmosphere, property=humidity"}
-Number   	Pressure         {weather="locationId=sandshome, type=atmosphere, property=pressure"}
+Number   	Pressure         {weather="locationId=sandshome, type=atmosphere, property=pressure, unit=inches"}
 
 DateTime ObservationTime0  {weather="locationId=sandshome, forecast=0, type=condition, property=observationTime"}
 DateTime ObservationTime1  {weather="locationId=sandshome, forecast=1, type=condition, property=observationTime"}
 DateTime ObservationTime2  {weather="locationId=sandshome, forecast=2, type=condition, property=observationTime"}
 
-Number   Temp_Min0         {weather="locationId=sandshome, forecast=0, type=temperature, property=min"}
-Number   Temp_Max0         {weather="locationId=sandshome, forecast=0, type=temperature, property=max"}
-Number   Temp_Min1         {weather="locationId=sandshome, forecast=1, type=temperature, property=min"}
-Number   Temp_Max1         {weather="locationId=sandshome, forecast=1, type=temperature, property=max"}
-Number   Temp_Min2         {weather="locationId=sandshome, forecast=2, type=temperature, property=min"}
-Number   Temp_Max2         {weather="locationId=sandshome, forecast=2, type=temperature, property=max"}
+Number   Temp_Min0         {weather="locationId=sandshome, forecast=0, type=temperature, property=min, unit=fahrenheit"}
+Number   Temp_Max0         {weather="locationId=sandshome, forecast=0, type=temperature, property=max, unit=fahrenheit"}
+Number   Temp_Min1         {weather="locationId=sandshome, forecast=1, type=temperature, property=min, unit=fahrenheit"}
+Number   Temp_Max1         {weather="locationId=sandshome, forecast=1, type=temperature, property=max, unit=fahrenheit"}
+Number   Temp_Min2         {weather="locationId=sandshome, forecast=2, type=temperature, property=min, unit=fahrenheit"}
+Number   Temp_Max2         {weather="locationId=sandshome, forecast=2, type=temperature, property=max, unit=fahrenheit"}
 
 String   Condition0        {weather="locationId=sandshome, forecast=0, type=condition, property=commonId"}
 String   Condition1        {weather="locationId=sandshome, forecast=1, type=condition, property=commonId"}
