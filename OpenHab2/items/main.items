@@ -128,3 +128,15 @@ Number   Temp_Max2         {weather="locationId=sandshome, forecast=2, type=temp
 String   Condition0        {weather="locationId=sandshome, forecast=0, type=condition, property=commonId"}
 String   Condition1        {weather="locationId=sandshome, forecast=1, type=condition, property=commonId"}
 String   Condition2        {weather="locationId=sandshome, forecast=2, type=condition, property=commonId"}
+
+Number UPS1_Battery_PLC {modbus="slave32:0"}
+
+Number UPS2_Battery_PLC {modbus="slave33:0"}
+
+Number UPS1_Input_PLC {modbus="slave36:0"}
+
+Number UPS2_Input_PLC {modbus="slave37:0"}
+
+Switch Upstairs_Shutdown {modbus="slave34:0"}
+
+Switch Downstairs_Shutdown {modbus="slave35:0"}

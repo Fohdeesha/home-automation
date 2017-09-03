@@ -29,3 +29,35 @@
                     GarageRelay.sendCommand(OFF)
 
         end
+
+        rule "Copy UPS1 Battery"
+        when
+            Item UPS1_Battery received update
+        then
+            UPS1_Battery_PLC.sendCommand(UPS1_Battery.state as DecimalType)
+
+        end
+
+        rule "Copy UPS2 Battery"
+        when
+            Item UPS2_Battery received update
+        then
+            UPS2_Battery_PLC.sendCommand(UPS2_Battery.state as DecimalType)
+
+        end
+
+        rule "Copy UPS1 Input"
+        when
+            Item UPS1_Input received update
+        then
+            UPS1_Input_PLC.sendCommand(UPS1_Input.state as DecimalType)
+
+        end
+
+        rule "Copy UPS2 Input"
+        when
+            Item UPS2_Input received update
+        then
+            UPS2_Input_PLC.sendCommand(UPS2_Input.state as DecimalType)
+
+        end
