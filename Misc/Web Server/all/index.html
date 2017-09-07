@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="manifest" href="manifest.json">
+<style type="text/css">
+    body {
+    overflow:hidden;
+}
+.box {
+   width: 50%;
+   padding-bottom: 0%;
+   background: #000000;
+   color: #FFF;
+   position: relative;
+   float:left;
+
+}
+.innerContent {
+   position: relative;
+   background: #000000;
+}
+.innerContent:nth-child(odd){
+    left:0px;right:0px;
+    top:0;
+    bottom:0px;
+}
+.innerContent img{
+   width:100%;
+   height:100%;
+}
+</style>
+</head>
+<body bgcolor="#171717">
+<div class="box">
+   <div class="innerContent">
+       <img src="http://web.home.lan:8085/stream"> 
+   </div>
+</div>
+<div class="box">
+   <div class="innerContent">
+       <img src="http://web.home.lan:8086/stream">
+   </div>
+</div>
+<div class="box">
+   <div class="innerContent">
+       <img src="http://web.home.lan:8087/stream">
+   </div>
+</div>
+<div class="box">
+   <div class="innerContent">
+       <img src="http://web.home.lan/reserved.png">
+   </div>
+</div>
+</body>
+</html>
+
