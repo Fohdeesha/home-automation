@@ -4,3 +4,10 @@ when
 then
     UPS1_BattVolt.sendCommand((UPS1_BattVoltRaw.state as DecimalType) / 10)
 end
+
+rule "Scale UPS2 Batt Voltage"
+when
+    Item UPS2_BattVoltRaw received update
+then
+    UPS2_BattVolt.sendCommand((UPS2_BattVoltRaw.state as DecimalType) / 10)
+end

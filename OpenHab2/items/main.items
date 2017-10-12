@@ -1,78 +1,80 @@
+Group logme
 
+Switch AC_Compressor (logme) {modbus="slave1:0"}
 
-Switch AC_Compressor {modbus="slave1:0"}
+Switch AC_Fan (logme) {modbus="slave30:0"}
 
-Switch AC_Fan {modbus="slave30:0"}
+Switch AC_RVS (logme) {modbus="slave31:0"}
 
-Switch AC_RVS {modbus="slave31:0"}
+Switch SCR_Output {modbus="slave13:0"}
 
-Switch SCR_Output "SCR_Override" {modbus="slave13:0"}
+Number Temp_Main (logme) {modbus="slave2:0"}
 
-Number Temp_Main "Temp [%.1f]" {modbus="slave2:0"}
+Number Humidity (logme) {modbus="slave3:0"}
 
-Number Humidity "Humidity [%.1f]" {modbus="slave3:0"}
+Number Watts (logme) {modbus="slave4:0"}
 
-Number Watts "Watts [%.1f]" {modbus="slave4:0"}
+Number Line_A_Current (logme) {modbus="slave5:0"}
 
-Number Line_A_Current "Line A Current [%.1f]" {modbus="slave5:0"}
+Number Line_B_Current (logme) {modbus="slave6:0"}
 
-Number Line_B_Current "Line B Current [%.1f]" {modbus="slave6:0"}
+Number Voltage (logme) {modbus="slave7:0"}
 
-Number Voltage "Voltage [%.1f]" {modbus="slave7:0"}
+Number KWH (logme) {modbus="slave8:0"}
 
-Number KWH "KWH [%f]" {modbus="slave8:0"}
+Number Power_Factor (logme) {modbus="slave9:0"}
 
-Number Power_Factor "Power Factor [%.1f]" {modbus="slave9:0"}
+Number Hertz (logme) {modbus="slave10:0"}
 
-Number Hertz "Hertz [%.1f]" {modbus="slave10:0"}
+Number Estimated_Bill (logme) {modbus="slave11:0"}
 
-Number Estimated_Bill "Estimated Bill [%.1f]" {modbus="slave11:0"}
+Number Line2Line_Volts (logme) {modbus="slave12:0"}
 
-Number Line2Line_Volts "Line To Line Volts [%f]" {modbus="slave12:0"}
+Number UPS1_Load (logme) {snmp="<[192.168.1.36/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.4.4.1.5.1:5000]"}
 
-Number UPS1_Load {snmp="<[192.168.1.36/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.4.4.1.5.1:5000]"}
+Number UPS1_Battery (logme) {snmp="<[192.168.1.36/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.2.4.0:5000]"}
 
-Number UPS1_Battery {snmp="<[192.168.1.36/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.2.4.0:5000]"}
-
-Number UPS1_Input {snmp="<[192.168.1.36/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.3.3.1.3.1:5000]"}
+Number UPS1_Input (logme) {snmp="<[192.168.1.36/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.3.3.1.3.1:5000]"}
 
 Number UPS1_BattVoltRaw {snmp="<[192.168.1.36/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.2.5.0:5000]"}
 
-Number UPS1_BattVolt
+Number UPS1_BattVolt (logme)
 
-Number UPS1_Temp {snmp="<[192.168.1.36/3664:v2c:tripplite:1.3.6.1.2.1.33.1.2.7.0:5000]"}
+Number UPS1_Temp (logme) {snmp="<[192.168.1.36/3664:v2c:tripplite:1.3.6.1.2.1.33.1.2.7.0:5000]"}
 
-Number UPS2_Load {snmp="<[192.168.1.10/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.4.4.1.5.1:5000]"}
+Number UPS2_Load (logme) {snmp="<[192.168.1.38/161:v2c:tripplite:.1.3.6.1.2.1.33.1.4.4.1.5.1:5000]"}
 
-Number UPS2_Battery {snmp="<[192.168.1.10/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.2.4.0:5000]"}
+Number UPS2_Battery (logme) {snmp="<[192.168.1.38/161:v2c:tripplite:.1.3.6.1.2.1.33.1.2.4.0:5000]"}
 
-Number UPS2_Input {snmp="<[192.168.1.10/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.3.3.1.3.1:5000]"}
+Number UPS2_Input (logme) {snmp="<[192.168.1.38/161:v2c:tripplite:.1.3.6.1.2.1.33.1.3.3.1.3.1:5000]"}
 
-Number UPS2_BattVolt {snmp="<[192.168.1.10/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.2.5.0:5000]"}
+Number UPS2_BattVoltRaw {snmp="<[192.168.1.38/161:v2c:tripplite:.1.3.6.1.2.1.33.1.2.5.0:5000]"}
 
-Number UPS2_Temp {snmp="<[192.168.1.10/3664:v2c:tripplite:1.3.6.1.2.1.33.1.2.7.0:5000]"}
+Number UPS2_Temp (logme) {snmp="<[192.168.1.38/161:v2c:tripplite:1.3.6.1.2.1.33.1.2.7.0:5000]"}
 
-Number Thermostat "Thermostat [%d]" {modbus="slave17:0"}
+Number UPS2_BattVolt (logme)
 
-Number ScanTime {modbus="slave23:0"}
+Number Thermostat (logme) {modbus="slave17:0"}
 
-Number Deadband {modbus="slave21:0"}
+Number ScanTime (logme) {modbus="slave23:0"}
 
-Number CostAvg "Average Cost"
+Number Deadband (logme) {modbus="slave21:0"}
 
-Switch HeatMode "Heat Mode" {modbus="slave24:0"}
+Number CostAvg (logme)
 
-Switch FanOnly "Fan Only" {modbus="slave25:0"}
+Switch HeatMode (logme) {modbus="slave24:0"}
 
-Switch HVACoff "HVAC Off" {modbus="slave18:0"}
+Switch FanOnly (logme) {modbus="slave25:0"}
+
+Switch HVACoff (logme) {modbus="slave18:0"}
 
 Switch TempError1 {modbus="slave20:0"}
 
 Switch TempError2 {modbus="slave22:0"}
 
-Switch KWH_Reset "KWH Reset" {modbus="slave19:0"}
+Switch KWH_Reset {modbus="slave19:0"}
 
-Number SCRDimmer "SCR Dimmer [%d]" {modbus="slave26:0"}
+Number SCRDimmer {modbus="slave26:0"}
 
 Color Basement_LED
 String Basement_LED_RGB {mqtt=">[mosquitto:/control/Arduino_PLC/color:command:*:default]"}
@@ -80,15 +82,15 @@ String Basement_LED_RGB {mqtt=">[mosquitto:/control/Arduino_PLC/color:command:*:
 Color Kitchen_LED
 String Kitchen_LED_RGB {mqtt=">[mosquitto:/control/Arduino_Kitchen/color:command:*:default]"}
 
-Number PSU1 {mqtt="<[mosquitto:/read/Arduino_PLC/PSU1:state:default]"}
+Number PSU1 (logme) {mqtt="<[mosquitto:/read/Arduino_PLC/PSU1:state:default]"}
 
-Number PSU2 {mqtt="<[mosquitto:/read/Arduino_PLC/PSU2:state:default]"}
+Number PSU2 (logme) {mqtt="<[mosquitto:/read/Arduino_PLC/PSU2:state:default]"}
 
-Number PSU3 {mqtt="<[mosquitto:/read/Arduino_PLC/PSU3:state:default]"}
+Number PSU3 (logme) {mqtt="<[mosquitto:/read/Arduino_PLC/PSU3:state:default]"}
 
-Number PSU4 {mqtt="<[mosquitto:/read/Arduino_PLC/PSU4:state:default]"}
+Number PSU4 (logme) {mqtt="<[mosquitto:/read/Arduino_PLC/PSU4:state:default]"}
 
-Number PSU5 {mqtt="<[mosquitto:/read/Arduino_PLC/PSU5:state:default]"}
+Number PSU5 (logme) {mqtt="<[mosquitto:/read/Arduino_PLC/PSU5:state:default]"}
 
 Number Arduino1_Memory {mqtt="<[mosquitto:/read/Arduino_PLC/memory:state:default]"}
 
@@ -102,16 +104,16 @@ Switch GarageRelayPLC {modbus="slave15:0"}
 
 Switch GarageHMI {modbus="slave16:0"}
 
-Switch UtilityPower "Utility Power Status" {modbus="slave27:0"}
+Switch UtilityPower (logme) {modbus="slave27:0"}
 
-Number RemoteTemp {mqtt="<[mosquitto:/read/RemoteTemp/status:state:default]"}
+Number RemoteTemp (logme) {mqtt="<[mosquitto:/read/RemoteTemp/status:state:default]"}
 
 Number CommsWatch {modbus="slave28:0"}
 
 Switch FireTest {modbus="slave29:0"}
 
-Number   Temperature       {weather="locationId=sandshome, type=temperature, property=current, unit=fahrenheit"}
-Number   	HumidityW        {weather="locationId=sandshome, type=atmosphere, property=humidity"}
+Number   Temperature     (logme)  {weather="locationId=sandshome, type=temperature, property=current, unit=fahrenheit"}
+Number   	HumidityW      (logme)  {weather="locationId=sandshome, type=atmosphere, property=humidity"}
 Number   	Pressure         {weather="locationId=sandshome, type=atmosphere, property=pressure, unit=inches"}
 
 DateTime ObservationTime0  {weather="locationId=sandshome, forecast=0, type=condition, property=observationTime"}
@@ -137,6 +139,10 @@ Number UPS1_Input_PLC {modbus="slave36:0"}
 
 Number UPS2_Input_PLC {modbus="slave37:0"}
 
-Switch Upstairs_Shutdown {modbus="slave34:0"}
+Switch Upstairs_Shutdown (logme) {modbus="slave34:0"}
 
-Switch Downstairs_Shutdown {modbus="slave35:0"}
+Switch Downstairs_Shutdown (logme) {modbus="slave35:0"}
+
+String OH2_Watchdog
+
+Number Mod_Test {modbus="slave38:0"}

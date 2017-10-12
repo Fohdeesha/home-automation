@@ -3,6 +3,6 @@ Strategies {
 }
 
 Items {
-   *   : strategy = everyChange, every60s
+   logme*   : strategy = everyChange, every60s
 
 }
