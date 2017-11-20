@@ -30,27 +30,31 @@ Number Estimated_Bill (logme) {modbus="slave11:0"}
 
 Number Line2Line_Volts (logme) {modbus="slave12:0"}
 
-Number UPS1_Load (logme) {snmp="<[192.168.1.36/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.4.4.1.5.1:5000]"}
+Number UPS1_Load (logme) {snmp="<[192.168.1.36/161:v2c:tripplite:1.3.6.1.2.1.33.1.4.4.1.5.1:5000]"}
 
-Number UPS1_Battery (logme) {snmp="<[192.168.1.36/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.2.4.0:5000]"}
+Number UPS1_Battery (logme) {snmp="<[192.168.1.36/161:v2c:tripplite:1.3.6.1.2.1.33.1.2.4.0:5000]"}
 
-Number UPS1_Input (logme) {snmp="<[192.168.1.36/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.3.3.1.3.1:5000]"}
+Number UPS1_Input (logme) {snmp="<[192.168.1.36/161:v2c:tripplite:1.3.6.1.2.1.33.1.3.3.1.3.1:5000]"}
 
-Number UPS1_BattVoltRaw {snmp="<[192.168.1.36/3664:v2c:tripplite:.1.3.6.1.2.1.33.1.2.5.0:5000]"}
+Number UPS1_BattVoltRaw {snmp="<[192.168.1.36/161:v2c:tripplite:1.3.6.1.2.1.33.1.2.5.0:5000]"}
+
+Number UPS1_Temp (logme) {snmp="<[192.168.1.36/161:v2c:tripplite:1.3.6.1.2.1.33.1.2.7.0:5000]"}
+
+Number UPS1_Status (logme) {snmp="<[192.168.1.36/161:v2c:tripplite:1.3.6.1.2.1.33.1.4.1.0:5000]"}
 
 Number UPS1_BattVolt (logme)
 
-Number UPS1_Temp (logme) {snmp="<[192.168.1.36/3664:v2c:tripplite:1.3.6.1.2.1.33.1.2.7.0:5000]"}
+Number UPS2_Load (logme) {snmp="<[192.168.1.38/161:v2c:tripplite:1.3.6.1.2.1.33.1.4.4.1.5.1:5000]"}
 
-Number UPS2_Load (logme) {snmp="<[192.168.1.38/161:v2c:tripplite:.1.3.6.1.2.1.33.1.4.4.1.5.1:5000]"}
+Number UPS2_Battery (logme) {snmp="<[192.168.1.38/161:v2c:tripplite:1.3.6.1.2.1.33.1.2.4.0:5000]"}
 
-Number UPS2_Battery (logme) {snmp="<[192.168.1.38/161:v2c:tripplite:.1.3.6.1.2.1.33.1.2.4.0:5000]"}
+Number UPS2_Input (logme) {snmp="<[192.168.1.38/161:v2c:tripplite:1.3.6.1.2.1.33.1.3.3.1.3.1:5000]"}
 
-Number UPS2_Input (logme) {snmp="<[192.168.1.38/161:v2c:tripplite:.1.3.6.1.2.1.33.1.3.3.1.3.1:5000]"}
-
-Number UPS2_BattVoltRaw {snmp="<[192.168.1.38/161:v2c:tripplite:.1.3.6.1.2.1.33.1.2.5.0:5000]"}
+Number UPS2_BattVoltRaw {snmp="<[192.168.1.38/161:v2c:tripplite:1.3.6.1.2.1.33.1.2.5.0:5000]"}
 
 Number UPS2_Temp (logme) {snmp="<[192.168.1.38/161:v2c:tripplite:1.3.6.1.2.1.33.1.2.7.0:5000]"}
+
+Number UPS2_Status (logme) {snmp="<[192.168.1.38/161:v2c:tripplite:1.3.6.1.2.1.33.1.4.1.0:5000]"}
 
 Number UPS2_BattVolt (logme)
 
@@ -66,7 +70,7 @@ Switch HeatMode (logme) {modbus="slave24:0"}
 
 Switch FanOnly (logme) {modbus="slave25:0"}
 
-Switch HVACoff (logme) {modbus="slave18:0"}
+Switch CoolingMode (logme) {modbus="slave18:0"}
 
 Switch TempError1 {modbus="slave20:0"}
 
@@ -146,3 +150,37 @@ Switch Downstairs_Shutdown (logme) {modbus="slave35:0"}
 String OH2_Watchdog
 
 Number Mod_Test {modbus="slave38:0"}
+
+Number UPS1_Status_PLC {modbus="slave39:0"}
+
+Number UPS2_Status_PLC {modbus="slave40:0"}
+
+Number Dark
+
+Number Watts_NoHVAC (logme) {modbus="slave41:0"}
+
+Number HVAC_Watts (logme) {modbus="slave42:0"}
+
+Number Heater_Watts (logme) {modbus="slave43:0"}
+
+Number Heater_CurrentA (logme) {modbus="slave44:0"}
+
+Number Heater_CurrentB (logme) {modbus="slave45:0"}
+
+Switch Heater1 (logme) {modbus="slave46:0"}
+
+Switch Heater2 (logme) {modbus="slave47:0"}
+
+Switch Heater3 (logme) {modbus="slave48:0"}
+
+Switch Heater4 (logme) {modbus="slave49:0"}
+
+Switch Heater5 (logme) {modbus="slave50:0"}
+
+Switch Heater6 (logme) {modbus="slave51:0"}
+
+Switch SetBack (logme) {modbus="slave52:0"}
+
+Switch SetBack_Status (logme) {modbus="slave53:0"}
+
+Number Setback_Thermostat (logme) {modbus="slave54:0"}
