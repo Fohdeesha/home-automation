@@ -2,4 +2,4 @@
 HabPanel Config Files
 
 
-![HabPanel Screenshot](https://i.imgur.com/9EI94KY.jpg)
+![HabPanel Screenshot](https://i.imgur.com/IGEvSM4.jpg)
