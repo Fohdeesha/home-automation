@@ -2,9 +2,6 @@
 There are many consumer automation packages available to a home owner, and also many home-spun projects using commodity hardware such as Arduinos and ESP8266 modules. Sadly they are quite limited in scope and flexibility, and more importantly, reliability. The advantage of an industrial PLC-centered automation design is several fold: device control and automation (fire detection, intrusion detection, power monitoring, HVAC control, etc) is not reliant on any computer systems, external software, services, or consumer grade hardware.  
 You also get very rugged hardware with orders of magnitude more I/O protection and reliability over something like an Arduino or off the shelf consumer automation system, coupled with a robust RTOS running your logic. These devices are typically designed to be installed and forgotten in the bottom of lift stations running pump sequences, factory floors running boilers and chemical processes, elevators, etc - in a typical home environment they should last forever with no user intervention.
 
-The one downside being I/O hardware modules are not cheap. If you're feeling thrifty, this can be offset by adding commodity hardware (Arduino, ESP8266, etc) for non-critical sensors and devices. For example, a $5 Arduino is being used to provide several PWM outputs to control 3 different RGB strip lighting zones, and various I/O for other unimportant decorative lighting. OpenHab converts the MQTT data to and from the Arduino into Modbus data to the PLC, so the PLC system just sees it as native I/O.  
-This saves several hundred dollars in expensive I/O modules - At worst, Arduinos are no more unreliable than typical consumer automation systems. Worst case if the Arduino fails, you've only lost decorative lighting control while the PLC logs the event and moves on keeping things like HVAC and intrusion detection running smoothly.
-
 ![PLC](https://i.imgur.com/5P6aPBs.jpg)
 
 ## Reliability	
