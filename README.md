@@ -1,6 +1,6 @@
 ## Framework for an industrial PLC-based Home Automation System. Full supervisory control of power, HVAC, UPS systems, lighting, early smoke + fire detection, IT infrastructure, etc. 
 There's a lot of consumer automation packages available, as well as a lot of home-brew projects (Arduino, ESP8266). However they're quite limited in scope and flexibility, and more importantly, reliability. There are many advantages of a PLC-centered design: device control and automation is not reliant on any computer systems, external software, services, or consumer grade hardware.  
-You also get very rugged hardware with orders of magnitude more I/O protection and reliability over something like an off the shelf consumer automation system, coupled with a robust RTOS running your logic. These devices are designed for long term use in harsh industrial environments - in a typical home environment they should last forever with no user intervention.
+The hardware you do get has orders of magnitude more I/O protection and reliability over something like an off the shelf consumer automation system, coupled with a robust RTOS running your logic. These devices are designed for long term use in harsh industrial environments - in a typical home environment they should last forever with no user intervention.
 
 ![PLC](https://i.imgur.com/5P6aPBs.jpg)
 
