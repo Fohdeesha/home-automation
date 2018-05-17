@@ -20,7 +20,7 @@ There are several other pages accessible for more specific device control -
 
 ![HabPanel Screenshot2](https://i.imgur.com/TINXqKa.jpg)
 
-Grafana is used for graphing and visualizing trends/historical data - 
+Grafana is used for graphing and visualizing trends/historical data. Some of them are publically viewable [here at this link](http://home.fohdeesha.com/graphs/d/000000005/power) - 
 
 ![Grafana Screenshot](https://i.imgur.com/SNKC5Aw.jpg)
 
