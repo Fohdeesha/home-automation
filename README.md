@@ -47,7 +47,7 @@ For those curious this is a (very) inconclusive list of hardware in use:
 - Quint 24vDC UPS
 - Allen Bradley 24vDC Power Supplies
 - WattNode Modbus Energy Meters
-- HoneyWell SCTHWA43SNS Temp & Humidity Sensors
+- Honeywell SCTHWA43SNS Temp & Humidity Sensors
 - Garadget Running Custom Firmware For Garage Door Control
 - Bosch D273 Smoke & Heat Sensors
 - Omron G3PA Solid State Relays
