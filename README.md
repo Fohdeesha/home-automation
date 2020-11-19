@@ -39,3 +39,30 @@ Xen Orchestra is used for XCP-ng/Virtualization platform management -
 
 ## Conclusions
 I've done my best to cover a high level overview of how the system works - there are many other aspects not covered here and this doesn't even begin to cover the hardware/industrial sensor side. It's been quite reliable and hands-off once configured. Having things like your air conditioning, fire detection system, servers, and lighting all aware of each other allows for some serious logic to be built. Most (software) moving parts and configuration sources are available in this repo for you to build upon if you so wish. 
+
+## Hardware  
+For those curious this is a (very) inconclusive list of hardware in use:  
+### Industrial Automation / Sensors
+- AutomationDirect Productivity3000 PLC
+- Quint 24vDC UPS
+- Allen Bradley 24vDC Power Supplies
+- WattNode Modbus Energy Meters
+- HoneyWell SCTHWA43SNS Temp & Humidity Sensors
+- Garadget Running Custom Firmware For Garage Door Control
+- Bosch D273 Smoke & Heat Sensors
+- Omron G3PA Solid State Relays
+- MSA FL4000H Flame Detector
+- Eaton PTX160 Whole House Surge Suppression 
+- ICC ETH-1000 Ethernet Modbus To RS485 DMX Gateway
+- 24vDC DMX > RGB LED Strip Controllers
+
+### Computing
+- Dell R730
+- Dell R630 (x2)
+- Brocade ICX6610 (x2)
+- TrippLite SMART2200RMXL2U UPS w/ External 70aH Battery String (x2)
+- Dell MD1200 DAS (ZFS Bulk Storage) (x2)
+- Axis P3364 Security Cameras (x6)
+- Ruckus R710 WiFi
+- Primary WAN: 1gbE Fiber
+- Secondary WAN: PepLink MAX BR1 LTE Modem (Backup)
